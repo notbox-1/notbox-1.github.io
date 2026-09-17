@@ -56,10 +56,10 @@
 .paperLink:focus-visible { outline:2px solid #2b6b57; outline-offset:4px; border-color:transparent; }
 .paperStatus { padding:3px 5px 3px 0; }
 .paperTitle { line-height:1.35; }
-.research { padding:135px 0; } .research h2 { margin:70px 0 95px; max-width:850px; }
+.research { padding:100px 0 125px; }
 .researchFlow { display:grid; grid-template-columns:repeat(5,1fr); border-block:1px solid var(--line); } .researchFlow div { min-height:170px; padding:20px 18px 24px 0; position:relative; display:flex; flex-direction:column; } .researchFlow span { font-size:10px; color:#82988f; } .researchFlow strong { margin-top:auto; font-family:Georgia,serif; font-size:17px; font-weight:400; } .researchFlow i { position:absolute; right:16px; bottom:22px; color:#8dc2a7; font-style:normal; }
 .researchNote { margin:80px 0 0 38%; display:grid; grid-template-columns:1fr 2fr; gap:25px; padding-top:22px; border-top:1px solid var(--line); } .researchNote p { margin:0; text-transform:uppercase; font-size:10px; letter-spacing:.1em; } .researchNote strong { font-family:Georgia,serif; font-weight:400; font-size:20px; line-height:1.5; }
-.labAffiliations { margin-top:80px; padding-top:22px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 3fr; gap:30px; }
+.labAffiliations { margin-top:0; padding-top:22px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 3fr; gap:30px; }
 .labAffiliations>p { margin:0; text-transform:uppercase; font-size:10px; letter-spacing:.1em; }
 .labAffiliations>div { display:grid; grid-template-columns:1fr 1fr; gap:45px; }
 .labAffiliations a { position:relative; padding:0 35px 22px 0; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:9px; transition:padding-left .2s,background .2s; }
