@@ -2,7 +2,7 @@ const projects = [
   {
     number: '01', title: 'Phase Transition', subtitle: 'Three phases of odd robotic active matter', status: 'Preprint',
     description: 'Experimental robotic collectives reveal three distinct phases of motion. I build custom MASBots, conduct controlled trials, extract trajectories, and analyze how local nonreciprocal interactions produce emergent states.',
-    tags: ['Active matter', 'MASBots', 'Trajectory analysis'], tone: 'sage', video: 'phase-transition.mp4', format: '16:9 · 5× speed', shape: 'landscapeVideo'
+    tags: ['Active matter', 'MASBots', 'Trajectory analysis'], tone: 'sage', video: 'phase-transition.mp4', format: '16:9 · 5× speed', shape: 'landscapeVideo', paper: 'https://arxiv.org/pdf/2603.09897'
   },
   {
     number: '02', title: 'Phase Separation', subtitle: 'Organization from programmed interactions', status: 'Ongoing research',
@@ -20,6 +20,28 @@ const stage = document.querySelector('.projectStage');
 const videoFrame = document.querySelector('.videoFrame');
 const video = document.querySelector('.projectVideo');
 
+function setProjectText(container, text, paper, linkClass) {
+  if (!paper) {
+    container.textContent = text;
+    return;
+  }
+
+  const link = document.createElement('a');
+  link.className = `paperLink ${linkClass}`;
+  link.href = paper;
+  link.target = '_blank';
+  link.rel = 'noreferrer';
+  link.append(document.createTextNode(`${text} `));
+  const arrow = document.createElement('span');
+  arrow.setAttribute('aria-hidden', 'true');
+  arrow.textContent = '↗';
+  const assistiveText = document.createElement('span');
+  assistiveText.className = 'srOnly';
+  assistiveText.textContent = 'Open paper in a new tab';
+  link.append(arrow, assistiveText);
+  container.replaceChildren(link);
+}
+
 document.querySelectorAll('.projectRail button').forEach((button) => {
   button.addEventListener('click', () => {
     const project = projects[Number(button.dataset.project)];
@@ -32,9 +54,9 @@ document.querySelectorAll('.projectRail button').forEach((button) => {
     video.load();
     video.play().catch(() => {});
     document.querySelector('.stageNumber').textContent = project.number;
-    document.querySelector('.stageStatus').textContent = project.status;
+    setProjectText(document.querySelector('.stageStatus'), project.status, project.paper, 'paperStatus');
     document.querySelector('.stageCopy h3').textContent = project.title;
-    document.querySelector('.stageCopy h4').textContent = project.subtitle;
+    setProjectText(document.querySelector('.stageCopy h4'), project.subtitle, project.paper, 'paperTitle');
     document.querySelector('.stageDescription').textContent = project.description;
     document.querySelector('.videoFormat').textContent = project.format;
     document.querySelector('.stageTags').replaceChildren(...project.tags.map((tag) => Object.assign(document.createElement('li'), { textContent: tag })));
